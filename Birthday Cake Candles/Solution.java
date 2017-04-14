@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Sample {
+public class Solution {
 
 	private static void tallestCandleCount(){
 		Scanner sc=new Scanner(System.in);
