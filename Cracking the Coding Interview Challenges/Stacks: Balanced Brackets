@@ -1,0 +1,56 @@
+import java.util.EmptyStackException;
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Solution {
+    
+    public static boolean isBalanced(String expression) {
+        
+    Stack<Character> stack = new Stack<>();
+    try {
+    for(char c:expression.toCharArray()) {
+      switch(c) {
+      case '(':
+      case '{':
+      case '[':
+        stack.push(c);
+      break;
+      case ')':         
+        if(stack.peek()=='(') {
+        stack.pop();
+      } else {
+        return false;
+      }
+      break;
+      case '}': if(stack.peek()=='{') {
+        stack.pop();
+      } else {
+        return false;
+      }
+      break;
+      case ']': if(stack.peek()=='[') {
+        stack.pop();
+      } else {
+        return false;
+      }
+      }
+    }
+    }catch(EmptyStackException ex) {
+      return false;
+    }
+    if(stack.empty()) {
+      return true;
+    }
+    return false;
+    
+    }
+  
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        for (int a0 = 0; a0 < t; a0++) {
+            String expression = in.next();
+            System.out.println( (isBalanced(expression)) ? "YES" : "NO" );
+        }
+    }
+}
