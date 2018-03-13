@@ -59,13 +59,17 @@ public class MinHeap {
 	private void heapifyDown(int pos) {
 		int left = left(pos);
 		int right = right(pos);
+		int smallest = pos;
 		
-		if(left < size && heap[left] < heap[right]) {
-			swap(left,pos);
-			heapifyDown(left);
-		} else if(right < size){
-			swap(right,pos);
-			heapifyDown(right);
+		if(left < size && heap[left] < heap[smallest]) {
+			smallest = left;
+		}
+		if(right < size && heap[right] < heap[smallest]){
+			smallest = right;
+		}
+		if(smallest!=pos) {
+			swap(smallest, pos);
+			heapifyDown(smallest);
 		}
 	}
 
